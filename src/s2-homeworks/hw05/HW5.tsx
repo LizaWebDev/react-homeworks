@@ -20,4 +20,4 @@ function HW5() {
     )
 }
 
-export default HW5
+export default HW5;
