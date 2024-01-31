@@ -1,20 +1,23 @@
-.input:focus {
+.inputWrapper {
+    position: relative;
 }
 
 .input {
-}
-
-.inputWrapper {
-}
-
-.superInput {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
 .errorInput {
-}
-
-.errorInput:focus {
+    border-color: red;
 }
 
 .error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-size: 12px;
+    color: red;
 }
