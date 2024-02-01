@@ -22,18 +22,9 @@ const SuperButton: React.FC<SuperButtonPropsType> = (
             ? ' ' + s.disabled // класс для дизэйбла
             : xType === 'red'
                 ? ' ' + s.red // класс для красной кнопки
-                    : xType === 'secondary'
-                        ? ' ' + s.secondary // класс для вторичной кнопки
-                        : ' ' + s.default); // дефолтная кнопка
-
-    return (
-        <button
-            disabled={disabled}
-            className={finalClassName}
-            {...restProps}
-        />
-    )
-
+                : xType === 'secondary'
+                    ? ' ' + s.secondary // класс для вторичной кнопки
+                    : ' ' + s.default); // дефолтная кнопка
 
     return (
         <button
