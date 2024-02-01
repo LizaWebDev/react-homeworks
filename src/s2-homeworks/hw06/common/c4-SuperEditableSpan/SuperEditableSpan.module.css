@@ -1,11 +1,18 @@
 .spanBlock {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .span {
+    cursor: pointer;
 }
 
 .input {
+    width: 200px;
 }
 
 .pen {
+    width: 16px;
+    height: 16px;
 }
