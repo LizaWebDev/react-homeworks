@@ -21,4 +21,4 @@ const HW9 = () => {
     )
 }
 
-export default HW9
+export default HW9;
