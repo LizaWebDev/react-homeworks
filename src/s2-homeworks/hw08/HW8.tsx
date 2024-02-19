@@ -98,4 +98,4 @@ const HW8 = () => {
     )
 }
 
-export default HW8
+export default HW8;
