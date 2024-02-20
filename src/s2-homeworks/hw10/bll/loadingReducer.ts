@@ -1,22 +1,29 @@
-const initState = {
+interface LoadingState {
+    isLoading: boolean;
+}
+
+const initState: LoadingState = {
     isLoading: false,
 }
 
-export const loadingReducer = (state = initState, action: any): any => { // fix any
-    switch (action.type) {
-        // пишет студент  // need to fix
+type LoadingAction = {
+    type: 'CHANGE_LOADING';
+    isLoading: boolean;
+}
 
+export const loadingReducer = (state: LoadingState = initState, action: LoadingAction): LoadingState => {
+    switch (action.type) {
+        case 'CHANGE_LOADING':
+            return {
+                ...state,
+                isLoading: action.isLoading,
+            };
         default:
-            return state
+            return state;
     }
 }
 
-type LoadingActionType = {
-    type: 'CHANGE_LOADING'
-    isLoading: boolean
-}
-
-export const loadingAC = (isLoading: boolean): LoadingActionType => ({
+export const loadingAC = (isLoading: boolean): LoadingAction => ({
     type: 'CHANGE_LOADING',
     isLoading,
 })
