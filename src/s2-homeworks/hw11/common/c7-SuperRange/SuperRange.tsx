@@ -5,47 +5,27 @@ const SuperRange: React.FC<SliderProps> = (props) => {
     return (
         <Slider
             sx={{ // стили для слайдера // пишет студент
-                color: '#00cc22',
-                height: 4,
-                width: '300px',
+                color: '#00CC22',
+                height: 5,
+                width: 300,
                 '& .MuiSlider-track': {
                     border: 'none',
-                    backgroundColor: '#00cc22',
+                    backgroundColor: '#00CC22',
                 },
                 '& .MuiSlider-rail': {
                     opacity: 0.5,
                     backgroundColor: '#8B8B8B',
-                    height: 4,
                 },
                 '& .MuiSlider-thumb': {
-                    height: 18,
-                    width: 18,
-                    backgroundColor: '#fff',
-                    border: '1px solid #00cc22',
-                    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-                        boxShadow: '0 0 0 6px rgba(0, 204, 34, 0.16)',
+                    height: 20,
+                    width: 20,
+                    backgroundColor: '#FFFFFF',
+                    border: '1px solid #00CC22',
+                    '&:hover, &.Mui-focusVisible': {
+                        boxShadow: '0px 0px 0px 8px rgba(0, 204, 34, 0.16)',
                     },
-                    '&:before': {
-                        display: 'none',
-                    },
-                },
-                '& .MuiSlider-valueLabel': {
-                    lineHeight: 1.2,
-                    fontSize: 12,
-                    background: 'unset',
-                    padding: 0,
-                    width: 32,
-                    height: 32,
-                    borderRadius: '50% 50% 50% 0',
-                    backgroundColor: '#00cc22',
-                    transformOrigin: 'bottom left',
-                    transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
-                    '&:before': { display: 'none' },
-                    '&.MuiSlider-valueLabelOpen': {
-                        transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
-                    },
-                    '& > *': {
-                        transform: 'rotate(45deg)',
+                    '&.Mui-active': {
+                        boxShadow: '0px 0px 0px 12px rgba(0, 204, 34, 0.16)',
                     },
                 },
             }}
