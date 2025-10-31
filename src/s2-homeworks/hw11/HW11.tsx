@@ -8,13 +8,14 @@ function HW11() {
     const [value1, setValue1] = useState(restoreState<number>('hw11-value1', 0))
     const [value2, setValue2] = useState(restoreState<number>('hw11-value2', 100))
 
-    const change = (event: any, value: number | number[]) => {
-        if (Array.isArray(value)) {
-            setValue1(value[0])
-            setValue2(value[1])
-        } else {
-            setValue1(value)
-        }
+    const handleSingleSliderChange = (event: Event, newValue: number | number[]) => {
+        setValue1(newValue as number)
+    }
+
+    const handleDoubleSliderChange = (event: Event, newValue: number | number[]) => {
+        const values = newValue as number[]
+        setValue1(values[0])
+        setValue2(values[1])
     }
 
     return (
@@ -28,7 +29,7 @@ function HW11() {
                         <SuperRange
                             id={'hw11-single-slider'}
                             value={value1}
-                            onChange={change}
+                            onChange={handleSingleSliderChange}
                         />
                     </div>
                     <div className={s.wrapper}>
@@ -36,7 +37,7 @@ function HW11() {
                         <SuperRange
                             id={'hw11-double-slider'}
                             value={[value1, value2]}
-                            onChange={change}
+                            onChange={handleDoubleSliderChange}
                         />
                         <span id={'hw11-value-2'} className={s.number}>{value2}</span>
                     </div>
