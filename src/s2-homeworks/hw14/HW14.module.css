@@ -1,7 +1,79 @@
-.tech {
+.container {
+    width: 100%;
+    max-width: 606px;
+    margin: 0 auto;
+}
 
+.input {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.techsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 29px;
+    min-height: 35px;
+}
+
+.tech {
+    background: #E5E5E5;
+    border-radius: 3px;
+    padding: 8px 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    white-space: nowrap;
 }
 
 .loading {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.loadingText {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.loadingText::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #0066CC;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.emptyLoading {
+    height: 48px;
+}
+
+.noResults {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #CCCCCC;
+    text-align: center;
+    width: 100%;
+    padding: 12px 0;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
