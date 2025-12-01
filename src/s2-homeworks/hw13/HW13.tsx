@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import s2 from '../../s1-main/App.module.css'
 import s from './HW13.module.css'
 import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
@@ -8,17 +8,12 @@ import error400 from './images/400.svg'
 import error500 from './images/500.svg'
 import errorUnknown from './images/error.svg'
 
-/*
-* 1 - дописать функцию send
-* 2 - дизэйблить кнопки пока идёт запрос
-* 3 - сделать стили в соответствии с дизайном
-* */
-
 const HW13 = () => {
     const [code, setCode] = useState('')
     const [text, setText] = useState('')
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const send = (x?: boolean | null) => () => {
         const url =
@@ -30,18 +25,45 @@ const HW13 = () => {
         setImage('')
         setText('')
         setInfo('...loading')
+        setIsLoading(true)
 
         axios
-            .post(url, {success: x})
+            .post(url, { success: x })
             .then((res) => {
+                setIsLoading(false)
                 setCode('Код 200!')
                 setImage(success200)
-                // дописать
-
+                setText(res.data.errorText)
+                setInfo(res.data.info)
             })
             .catch((e) => {
-                // дописать
-
+                setIsLoading(false)
+                if (e.response) {
+                    switch (e.response.status) {
+                        case 400:
+                            setCode('Ошибка 400!')
+                            setImage(error400)
+                            setText(e.response.data.errorText)
+                            setInfo(e.response.data.info)
+                            break
+                        case 500:
+                            setCode('Ошибка 500!')
+                            setImage(error500)
+                            setText(e.response.data.errorText)
+                            setInfo(e.response.data.info)
+                            break
+                        default:
+                            setCode('Error!')
+                            setImage(errorUnknown)
+                            setText(e.message)
+                            setInfo(e.name)
+                    }
+                } else {
+                    setCode('Error!')
+                    setImage(errorUnknown)
+                    setText(e.message)
+                    setInfo('Network Error')
+                }
             })
     }
 
@@ -55,8 +77,7 @@ const HW13 = () => {
                         id={'hw13-send-true'}
                         onClick={send(true)}
                         xType={'secondary'}
-                        // дописать
-
+                        disabled={isLoading}
                     >
                         Send true
                     </SuperButton>
@@ -64,8 +85,7 @@ const HW13 = () => {
                         id={'hw13-send-false'}
                         onClick={send(false)}
                         xType={'secondary'}
-                        // дописать
-
+                        disabled={isLoading}
                     >
                         Send false
                     </SuperButton>
@@ -73,17 +93,15 @@ const HW13 = () => {
                         id={'hw13-send-undefined'}
                         onClick={send(undefined)}
                         xType={'secondary'}
-                        // дописать
-
+                        disabled={isLoading}
                     >
                         Send undefined
                     </SuperButton>
                     <SuperButton
                         id={'hw13-send-null'}
-                        onClick={send(null)} // имитация запроса на не корректный адрес
+                        onClick={send(null)}
                         xType={'secondary'}
-                        // дописать
-
+                        disabled={isLoading}
                     >
                         Send null
                     </SuperButton>
@@ -91,7 +109,7 @@ const HW13 = () => {
 
                 <div className={s.responseContainer}>
                     <div className={s.imageContainer}>
-                        {image && <img src={image} className={s.image} alt="status"/>}
+                        {image && <img src={image} className={s.image} alt="status" />}
                     </div>
 
                     <div className={s.textContainer}>
